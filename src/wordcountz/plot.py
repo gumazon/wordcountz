@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 
 def bar_top(infile, n=10, word_counts=None, plot_type='bar'):
     """Plot a bar chart of top `n` words in `word_counts` from `infile`.
-    ------------
+    --------------------------------------------------------------------
 
     Creates a matplotlib.container.BarContainer, bar chart object, of top N words.
     Then saves it as a PNG image file, into parent direcotry of the input text file.
