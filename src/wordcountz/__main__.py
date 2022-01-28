@@ -28,11 +28,11 @@ def main(*args, **kwargs):
     else:
         plot_type = 'bar'
 
-    wrds = count.words(file_path)
+    wrds = count.words(infile=file_path)
     fig = plot.top_words(infile=file_path, n=n, word_counts=wrds, plot_type=plot_type)
     plt.show()
 
 
 if __name__ == '__main__':
-    print('wordcountz', 'v'+wordcountz.__version__)
+    print(wordcountz.__version__)
     main(*[_av for _av in  sys.argv])

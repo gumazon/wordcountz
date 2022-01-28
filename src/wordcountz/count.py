@@ -51,7 +51,7 @@ def sanitize(text):
     return text
 
 
-def words(infile):
+def words(infile=None, value=None):
     """Count words in a text file.
 
     Words are made lowercase and punctuation is removed
@@ -62,6 +62,9 @@ def words(infile):
     infile : str
         Path to text file.
 
+    value : str
+        Text value.
+
     Returns
     -------
     collections.Counter
@@ -70,10 +73,24 @@ def words(infile):
     Examples
     --------
     >>> from wordcountz.wordcountz import count
-    ... count.words("text.txt")
+    ...
+    ... # Text from infile
+    ... count.words(infile="text.txt")
+    ...
+    ... # Text from value
+    ... count.words(value="Insanity is doing the same thing over and over and expecting different results.")
 
     """
-    text = load(infile)
-    text = sanitize(text)
-    wrds = text.split()
-    return Counter(wrds)
+    text = ''
+    if infile is not None:
+        text = load(infile)
+    elif value is not None:
+        text = value
+    else:
+        print('Missing text value or file path.')
+
+    if text:
+        text = sanitize(text)
+
+        wrds = text.split()
+        return Counter(wrds)
