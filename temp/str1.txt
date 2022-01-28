@@ -1,0 +1,5 @@
+Looks like everything is working! We have now created and
+installed a simple Python package! You can now use this
+Python package in any project you wish (if using virtual
+environments, you’ll need to poetry install the package in
+them before it can be used)

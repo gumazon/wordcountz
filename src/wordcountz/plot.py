@@ -2,7 +2,7 @@ from pathlib import Path
 import matplotlib.pyplot as plt
 
 
-def bar_top(infile, n=10, word_counts=None, plot_type='bar'):
+def top_words(infile, n=10, word_counts=None, plot_type='bar'):
     """Plot a bar chart of top `n` words in `word_counts` from `infile`.
     --------------------------------------------------------------------
 
@@ -26,15 +26,16 @@ def bar_top(infile, n=10, word_counts=None, plot_type='bar'):
 
     Returns
     -------
-    top_{n}_{input_file_stem}_words.png: image
-        Writtes a bar chart, PNG image file, of the top N words,
-        to the parent dir of the given input_file.
+    fig: matplotlib.container.BarContainer
+        - creates a bar chart fig of the top N words.
+        - saves fig to "top_{n}_{input_file_stem}_words.png" image file,
+          in parent dir of `input_file`.
 
     Examples
     --------
-    >>> from wordcountz.wordcountz import count, plot
+    >>> from wordcountz import count, plot
     ... wrds = count.words('text.txt')
-    ... plot.bar_top(infile='text.txt', n=10, word_counts=wrds, plot_type='bar')
+    ... plot.top_words(infile='text.txt', n=10, word_counts=wrds, plot_type='bar')
 
     """
     if word_counts:
@@ -47,7 +48,7 @@ def bar_top(infile, n=10, word_counts=None, plot_type='bar'):
             fig = plt.bar(range(n), count)
             plt.title(_title)
             plt.xticks(range(n), labels=word, rotation=30)
-            plt.ylabel('Word')
-            plt.xlabel('Count')
+            plt.xlabel('Word')
+            plt.ylabel('Count')
             plt.savefig('{}/{}.png'.format(infile.parent, '_'.join([_word.lower() for _word in _title.split(' ')])))
             return fig
