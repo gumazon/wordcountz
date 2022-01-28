@@ -2,7 +2,7 @@ from pathlib import Path
 import matplotlib.pyplot as plt
 
 
-def bar_top(n=10, word_counts=None, infile=None, plot_type='bar'):
+def bar_top(infile, n=10, word_counts=None, plot_type='bar'):
     """Plot a bar chart of top `n` words in `word_counts` from `infile`.
     ------------
 
@@ -32,15 +32,12 @@ def bar_top(n=10, word_counts=None, infile=None, plot_type='bar'):
 
     Examples
     --------
-    >>> from wordcountz.wordcountz import count
-    ... from wordcountz.wordcountz import plot
+    >>> from wordcountz.wordcountz import count, plot
     ... wrds = count.words('text.txt')
-    ... plot.bar_top(n=10, word_counts=wrds, infile='text.txt', plot_type='bar')
+    ... plot.bar_top(infile='text.txt', n=10, word_counts=wrds, plot_type='bar')
 
     """
     if word_counts:
-        if infile is None:
-            infile = '{}/Public/wordcountz/temp/zen.txt'.format(Path.home())
         infile = Path(infile)
         _title = 'Top {} {} Words'.format(n, infile.stem.capitalize())
 
