@@ -36,6 +36,7 @@ def bar_top(n=10, word_counts=None, infile=None, plot_type='bar'):
     ... from wordcountz.wordcountz import plot
     ... wrds = count.words('text.txt')
     ... plot.bar_top(n=10, word_counts=wrds, infile='text.txt', plot_type='bar')
+
     """
     if word_counts:
         if infile is None:

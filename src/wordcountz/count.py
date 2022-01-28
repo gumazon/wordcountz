@@ -42,7 +42,7 @@ def sanitize(text):
     --------
     >>> from wordcountz.wordcountz import count
     ... count.sanitize("Early optimization is the root of all evil!")
-    'early optimization is the root of all evil'
+
     """
     text = text.lower()
     for p in punctuation:
