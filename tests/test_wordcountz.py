@@ -1,7 +1,7 @@
 from collections import Counter
 from pathlib import Path
 
-from wordcountz.wordcountz.src.wordcountz import count_words
+from wordcountz.wordcountz import count_words
 
 
 def test_count_words():
