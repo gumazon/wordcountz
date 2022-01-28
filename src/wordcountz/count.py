@@ -19,6 +19,7 @@ def load(infile):
     --------
     >>> from wordcountz.wordcountz import count
     ... count.load("text.txt")
+
     """
     with open(infile, "r") as file:
         text = file.read()
@@ -70,6 +71,7 @@ def words(infile):
     --------
     >>> from wordcountz.wordcountz import count
     ... count.words("text.txt")
+
     """
     text = load(infile)
     text = sanitize(text)
