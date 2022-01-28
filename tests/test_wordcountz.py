@@ -3,6 +3,10 @@ from pathlib import Path
 
 from wordcountz.wordcountz import count_words
 
+quote = "Insanity is doing the same thing over and over and expecting different results."
+with open("einstein.txt", "w") as file:
+    file.write(quote)
+
 
 def test_count_words():
     """Test word counting from a file."""
