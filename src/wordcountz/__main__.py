@@ -1,38 +1,57 @@
 #!/usr/bin/env python
 
 
-from pathlib import Path
 import sys
-import count, plot
-import matplotlib.pyplot as plt
 import wordcountz
+from controller import Controller
 
 
 def main(*args, **kwargs):
+    """
+
+    API:
+          python src/wordcountz <action> <text> <n>
+    show: json
+         python src/wordcountz show "`pwd`/temp/zen.txt"
+    infograph: png
+         python src/wordcountz infograph "`pwd`/temp/zen.txt" 10
+
+    :param args:
+    :param kwargs:
+    :return:
+    """
     rgvs = []
     rgvs.extend(args)
     print(rgvs)
+    _output = {}
+
+    action = 'show'
+    file = ''
+    text = ''
+    n = 0
 
     if len(rgvs) > 1:
-        file_path = rgvs[1]
-    else:
-        file_path = "{}/temp/einstein.txt".format(Path.cwd())
+        action = rgvs[1]
 
     if len(rgvs) > 2:
-        n = int(rgvs[2])
-    else:
-        n = 10
+        _val = rgvs[2]
+        if '/' in _val:
+            file = _val
+        else:
+            text = _val
+    if action == 'infograph':
+        if len(rgvs) > 3:
+            n = rgvs[3]
 
-    if len(rgvs) > 3:
-        plot_type = rgvs[3]
-    else:
-        plot_type = 'bar'
-
-    wrds = count.words(infile=file_path)
-    fig = plot.top_words(infile=file_path, n=n, word_counts=wrds, plot_type=plot_type)
-    plt.show()
+    app = Controller()
+    if action == 'show':
+        return app.show(file=file, text=text, n=n)
+    if action == 'infograph':
+        return app.infograph(file=file, text=text, n=n)
 
 
 if __name__ == '__main__':
     print(wordcountz.__version__)
-    main(*[_av for _av in  sys.argv])
+    # print(bin(5).replace("0b", ""))
+    print("{0:b}".format(int(5)))
+    print(main(*[_av for _av in sys.argv]))
