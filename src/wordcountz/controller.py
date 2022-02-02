@@ -20,4 +20,4 @@ class Controller:
 
     def infograph(self, **kwargs):
         self._collection = kwargs.copy()
-        return self._view.infograph(self._model(**self._collection.copy()).counter, 0)
+        return self._view.infograph(self._model(**self._collection.copy()).counter, n=int(kwargs.get('n', 0)))

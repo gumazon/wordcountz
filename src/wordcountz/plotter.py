@@ -18,7 +18,7 @@ def draw(word_counter=None, n=10):
         return _bar_fig(word_counter=word_counter, n=n)
 
 
-def _bar_fig(word_counter=None, n=10):
+def _bar_fig(word_counter, n):
     """Plot a bar chart of top N words.
 
     Creates a matplotlib.container.BarContainer, bar chart object, of top N words.
